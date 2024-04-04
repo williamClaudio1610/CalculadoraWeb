@@ -1,163 +1,104 @@
-
-const previous_operacaoText = document.querySelector("#previous-operacao");
-const operacao_atualText = document.querySelector("#operacao-atual");
-const buttons = document.querySelectorAll("#botoes button");
-
-console.log(buttons)
-
-
-class calculadora {
-    constructor(previous_operacaoText, operacao_atualText) {
-        this.previous_operacaoText = previous_operacaoText;
-        this.operacao_atualText = operacao_atualText;
-        this.operacao_atual = "";
-
+class Calculadora {
+    constructor(previousOperacaoText, operacaoAtualText) {
+        this.previousOperacaoText = previousOperacaoText;
+        this.operacaoAtualText = operacaoAtualText;
+        this.operacaoAtual = "";
+        this.operacaoAnterior = "";
+        this.operacao = undefined;
     }
 
-    //adicionar um digito
+
+    //adicionar um digito para calcular
     addDigito(digit) {
-        console.log(digit);
-        //verificar se um numero já tem ponto
-        if (digit == "." && operacao_atualText.innerText.includes(".")) {
-            return;
-        }
-
-        this.operacao_atual = digit
+        if (digit === "." && this.operacaoAtual.includes(".")) return;
+        this.operacaoAtual = this.operacaoAtual.toString() + digit.toString();
         this.atualizarVisor();
-
     }
 
-    //processamento das operações
-
+    //processar uma operação a escolha do user
     processamentoOperacao(operation) {
-
-        // Check if current value is empty
-        if (this.operacao_atualText.innerText === "" && operation !== "C") {
-            // Change operation
-            if (this.previous_operacaoText.innerText !== "") {
-                this.changeOperation(operation);
-            }
-            return;
+        if (this.operacaoAtual === "") return;
+        if (this.operacaoAnterior !== "") {
+            this.realizarCalculo();
         }
+        this.operacao = operation;
+        this.operacaoAnterior = this.operacaoAtual;
+        this.operacaoAtual = "";
+    }
 
+    //realizar calculo quando o input for  =
+    realizarCalculo() {
+        let resultado;
+        const anterior = parseFloat(this.operacaoAnterior);
+        const atual = parseFloat(this.operacaoAtual);
 
-        //pegar valor atual e o anterior
-        let valorOperacao;
-        const anterior = +this.previous_operacaoText.innerText;
-        const atual = +this.operacao_atualText.innerText;
-
-        switch (operation) {
+        //verificar se é um número a partir da funcao nativa do JS isNaN
+        if (isNaN(anterior) || isNaN(atual)) return;
+        switch (this.operacao) {
             case "+":
-                valorOperacao = anterior + atual;
-                this.atualizarVisor(valorOperacao, operation, atual, anterior)
+                resultado = anterior + atual;
                 break;
             case "-":
-                valorOperacao = anterior + atual;
-                this.atualizarVisor(valorOperacao, operation, atual, anterior)
+                resultado = anterior - atual;
                 break;
             case "*":
-                valorOperacao = anterior + atual;
-                this.atualizarVisor(valorOperacao, operation, atual, anterior)
+                resultado = anterior * atual;
                 break;
             case "/":
-                valorOperacao = anterior + atual;
-                this.atualizarVisor(valorOperacao, operation, atual, anterior)
+                resultado = anterior / atual;
                 break;
-            /*
-
-        case "DEL":
-            this.processDelOperator();
-            break;
-        case "CE":
-            this.processClearCurrentOperator();
-            break;
-        case "C":
-            this.processClearOperator();
-            break;
-        case "=":
-            this.processEqualOperator();
-            break;
-            */
             default:
                 return;
         }
-
+        this.operacaoAtual = resultado;
+        this.operacaoAnterior = "";
+        this.operacao = undefined;
+        this.atualizarVisor();
     }
 
-    atualizarVisor(valorOperacao = null, operation = null, atual = null, anterior = null) {
-
-        console.log(valorOperacao, operacao, atual, anterior);
-        if (valorOperacao === null) {
-            this.operacao_atualText.innerText += this.operacao_atual;
-
+    
+//atualizar o visor
+    atualizarVisor() {
+        this.operacaoAtualText.innerText = this.operacaoAtual;
+        if (this.operacao !== undefined) {
+            this.previousOperacaoText.innerText = `${this.operacaoAnterior} ${this.operacao}`;
         } else {
-            //verificar se o valot é zero, se for, apenas adiciona ao valor atual
-            if (anterior === 0) {
-                valorOperacao = atual;
-            }
-            //adicionar valor atual para o anterior
-            this.previous_operacaoText.innerText = `${valorOperacao} ${operation}`;
-            this.operacao_atualText.innerText = "";
+            this.previousOperacaoText.innerText = "";
         }
-
-
-
     }
 
-    /*
-    changeOperation(operation) {
-        const mathOperations = ["*", "-", "+", "/"];
-
-        if (!mathOperations.includes(operation)) {
-            return;
-        }
-
-        this.previous_operacaoText.innerText =
-            this.previous_operacaoText.innerText.slice(0, -1) + operation;
+    limpar() {
+        this.operacaoAtual = "";
+        this.operacaoAnterior = "";
+        this.operacao = undefined;
+        this.atualizarVisor();
     }
 
-    // Delete a digit
-    processDelOperator() {
-        this.operacao_atualText.innerText =
-            this.operacao_atualText.innerText.slice(0, -1);
+    deletar() {
+        this.operacaoAtual = this.operacaoAtual.toString().slice(0, -1);
+        this.atualizarVisor();
     }
-
-    // Clear current operation
-    processClearCurrentOperator() {
-        this.operacao_atualText.innerText = "";
-    }
-
-    // Clear all operations
-    processClearOperator() {
-        this.operacao_atualText.innerText = "";
-        this.previousOperationText.innerText = "";
-    }
-
-    // Process an operation
-    processEqualOperator() {
-        let operation = this.previousOperationText.innerText.split(" ")[1];
-
-        this.processOperation(operation);
-    }x
-    */
-
 }
 
+const previousOperacaoText = document.querySelector("#previous-operacao");
+const operacaoAtualText = document.querySelector("#operacao-atual");
+const buttons = document.querySelectorAll("#botoes button");
 
-const calc = new calculadora(previous_operacaoText, operacao_atualText)
+const calc = new Calculadora(previousOperacaoText, operacaoAtualText);
 
 buttons.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-        const valor = e.target.innerText;
-        //console.log(valor);
-
-        if (+valor >= 0 || valor === ".") {
-            //console.log(valor);
+    btn.addEventListener("click", () => {
+        const valor = btn.innerText;
+        if (!isNaN(valor) || valor === ".") {
             calc.addDigito(valor);
+        } else if (valor === "C") {
+            calc.limpar();
+        } else if (valor === "DEL") {
+            calc.deletar();
+        } else if (valor === "=") {
+            calc.realizarCalculo();
         } else {
             calc.processamentoOperacao(valor);
         }
-
     });
-
-})
+});
