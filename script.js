@@ -5,6 +5,14 @@ class Calculadora {
         this.operacaoAtual = 0;
         this.operacaoAnterior = 0;
         this.operacao = undefined;
+        this.historico = [];
+
+        if (localStorage.getItem('historico') == null) {
+            localStorage.setItem('historico', JSON.stringify(this.historico));
+        } else {
+            this.historico = JSON.parse(localStorage.getItem('historico'));
+        }
+        
     }
 
 
@@ -37,40 +45,52 @@ class Calculadora {
         switch (this.operacao) {
             case "+":
                 resultado = (anterior + atual);
+                this.historico.push(`${anterior} ${this.operacao} ${atual} = ${resultado}`);
                 break;
             case "-":
                 resultado = (anterior - atual);
+                this.historico.push(`${anterior} ${this.operacao} ${atual} = ${resultado}`);
                 break;
             case "*":
                 resultado = (anterior * atual);
+                this.historico.push(`${anterior} ${this.operacao} ${atual} = ${resultado}`);
                 break;
             case "/":
                 resultado = (anterior / atual).toFixed(2);
+                this.historico.push(`${anterior} ${this.operacao} ${atual} = ${resultado}`);
                 break;
             case "sqrt":
                 resultado = Math.sqrt(atual).toFixed(5);
+                this.historico.push(`${this.operacao}(${atual}) = ${resultado}`);
                 break;
             case "%":
                 resultado = (atual / 100).toFixed(2);
+                this.historico.push(`${anterior} ${this.operacao} ${atual} = ${resultado}`);
                 break;
             case "^":
                 resultado = Math.pow(anterior, atual).toFixed(1);
+                this.historico.push(`${anterior} ${this.operacao} ${atual} = ${resultado}`);
                 break;
             case "log":
                 resultado = Math.log10(atual).toFixed(2);
+                this.historico.push(`${this.operacao}(${atual}) = ${resultado}`);
                 break;
             case "sin":
                 resultado = Math.sin(atual * (Math.PI / 180)).toFixed(2);
+                this.historico.push(`${this.operacao}(${atual}) = ${resultado}`);
                 break;
             case "cos":
                 resultado = Math.cos(atual * (Math.PI / 180)).toFixed(2);
+                this.historico.push(`${this.operacao}(${atual}) = ${resultado}`);
                 break;
             case "tan":
                 resultado = Math.tan(atual * (Math.PI / 180)).toFixed(2);
+                this.historico.push(`${this.operacao}(${atual}) = ${resultado}`);
                 break;
             default:
                 return;
         }
+        this.salvarHistorico();
         this.operacaoAtual = resultado;
         this.operacaoAnterior = "";
         this.operacao = undefined;
@@ -96,6 +116,10 @@ class Calculadora {
     deletar() {
         this.operacaoAtual = this.operacaoAtual.toString().slice(0, -1);
         this.atualizarVisor();
+    }
+
+    salvarHistorico() {
+        localStorage.setItem('historico', JSON.stringify(this.historico));
     }
 }
 
