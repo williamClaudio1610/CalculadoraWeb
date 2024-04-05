@@ -1,11 +1,11 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: Helvetica;
 }
 
-#corpotodo{
+#corpotodo {
     background-color: white;
     display: flex;
     align-items: center;
@@ -15,19 +15,22 @@
     height: 920px;
 
 }
-#menu{
+
+#menu {
     width: 100%;
-    height: 100px;
+    height: 110px;
     background-color: grey;
-    border-radius: 1px 1px 1px 1px;
+    border-radius: 1px;
+    position: absolute;
+
+
 }
 
 
-
-#calc{
+#calc {
     width: 400px;
     padding: .5em;
-    background-color: #2C4D7D;
+    background-color: #e0ffcd;
     color: black;
     display: flex;
     flex-direction: column;
@@ -36,24 +39,25 @@
 
 }
 
-#calc h3{
+#calc h3 {
     font-size: .8em;
     font-weight: 300;
-    color:  white;
+    color: black;
 }
 
-#operacao{
+#operacao {
     text-align: right;
-    
+
 }
 
-#previous-operacao{
-    color: white;
+#previous-operacao {
+    color: black;
     padding: 0.2em;
     overflow-wrap: break-word;
     min-height: 1.6em;
 }
-#operacao-atual{
+
+#operacao-atual {
     min-height: 1.6em;
     font-size: 3em;
     font-weight: 700;
@@ -61,7 +65,7 @@
     overflow-wrap: 1.6em;
 }
 
-#botoes{
+#botoes {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 3px;
@@ -69,30 +73,31 @@
 
 }
 
-#botoes button{
+#botoes button {
     border: 1px solid transparent;
     border-radius: 1px 1px 1px 1px;
     height: 4em;
     font-size: 1.2em;
-    background-color: #444040;
+    background-color: #be620b;
     cursor: pointer;
 }
 
-#botoes .num-bt{
+#botoes .num-bt {
     background-color: black;
     color: white;
 }
-#botoes button:hover{
-    background-color: #2C4D7D;
+
+#botoes button:hover {
+    background-color: #777a80;
     border-color: #999;
 }
 
-#botoes #igual-bt{
+#botoes #igual-bt {
     grid-column: span 2;
     background-color: black;
     color: white;
 }
 
-#botoes #igual-bt:hover{
-    background-color: #3a91D8;
+#botoes #igual-bt:hover {
+    background-color: #31343a;
 }
