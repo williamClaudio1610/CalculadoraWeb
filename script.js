@@ -2,20 +2,21 @@ class Calculadora {
     constructor(previousOperacaoText, operacaoAtualText) {
         this.previousOperacaoText = previousOperacaoText;
         this.operacaoAtualText = operacaoAtualText;
-        this.operacaoAtual = "";
-        this.operacaoAnterior = "";
+        this.operacaoAtual = 0;
+        this.operacaoAnterior = 0;
         this.operacao = undefined;
     }
 
 
-    //adicionar um digito para calcular
+    //adiiconar um digito para calcular
     addDigito(digit) {
         if (digit === "." && this.operacaoAtual.includes(".")) return;
+
         this.operacaoAtual = this.operacaoAtual.toString() + digit.toString();
         this.atualizarVisor();
     }
 
-    //processar uma operação a escolha do user
+
     processamentoOperacao(operation) {
         if (this.operacaoAtual === "") return;
         if (this.operacaoAnterior !== "") {
@@ -26,7 +27,6 @@ class Calculadora {
         this.operacaoAtual = "";
     }
 
-    //realizar calculo quando o input for  =
     realizarCalculo() {
         let resultado;
         const anterior = parseFloat(this.operacaoAnterior);
@@ -36,16 +36,37 @@ class Calculadora {
         if (isNaN(anterior) || isNaN(atual)) return;
         switch (this.operacao) {
             case "+":
-                resultado = anterior + atual;
+                resultado = (anterior + atual);
                 break;
             case "-":
-                resultado = anterior - atual;
+                resultado = (anterior - atual);
                 break;
             case "*":
-                resultado = anterior * atual;
+                resultado = (anterior * atual);
                 break;
             case "/":
-                resultado = anterior / atual;
+                resultado = (anterior / atual).toFixed(2);
+                break;
+            case "sqrt":
+                resultado = Math.sqrt(atual).toFixed(5);
+                break;
+            case "%":
+                resultado = (atual / 100).toFixed(2);
+                break;
+            case "^":
+                resultado = Math.pow(anterior, atual).toFixed(1);
+                break;
+            case "log":
+                resultado = Math.log10(atual).toFixed(2);
+                break;
+            case "sin":
+                resultado = Math.sin(atual * (Math.PI / 180)).toFixed(2);
+                break;
+            case "cos":
+                resultado = Math.cos(atual * (Math.PI / 180)).toFixed(2);
+                break;
+            case "tan":
+                resultado = Math.tan(atual * (Math.PI / 180)).toFixed(2);
                 break;
             default:
                 return;
@@ -56,8 +77,6 @@ class Calculadora {
         this.atualizarVisor();
     }
 
-    
-//atualizar o visor
     atualizarVisor() {
         this.operacaoAtualText.innerText = this.operacaoAtual;
         if (this.operacao !== undefined) {
@@ -91,7 +110,7 @@ buttons.forEach((btn) => {
         const valor = btn.innerText;
         if (!isNaN(valor) || valor === ".") {
             calc.addDigito(valor);
-        } else if (valor === "C") {
+        } else if (valor === "CE") {
             calc.limpar();
         } else if (valor === "DEL") {
             calc.deletar();
@@ -99,6 +118,7 @@ buttons.forEach((btn) => {
             calc.realizarCalculo();
         } else {
             calc.processamentoOperacao(valor);
+            
         }
     });
 });
