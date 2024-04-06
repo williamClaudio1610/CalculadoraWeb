@@ -23,7 +23,24 @@
     border-radius: 1px;
     position: absolute;
 
+}
 
+#menu ul {
+    list-style-type: none; /* Remover os marcadores da lista */
+    padding: 0; /* Remover o preenchimento padrão */
+    text-align: center; /* Centralizar o texto */
+}
+
+#menu ul li {
+    display: inline-block; /* Exibir os itens de lista em linha */
+}
+
+#menu ul li a {
+    display: block; /* Transformar o link em um bloco */
+    padding: 10px; /* Adicionar preenchimento ao redor do link */
+    text-decoration: none; /* Remover sublinhado padrão */
+    font-size: 20px;
+    color: black;
 }
 
 
