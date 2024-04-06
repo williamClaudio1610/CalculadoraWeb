@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pr-PT">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estiloConversor.css">
+    <script src="scriptCOnversor.js" defer></script>
+
+    <title>Calculadora</title>
+</head>
+
+<body>
+
+    <header id="menu">
+        <div id="menuDIv">
+
+            <select name="Menu" id="menu">
+                <option value="Calculadora"><a href="CalculadoraIndex.html"></a>Calculadora</option>
+                <option value="conversor">ConversorUNidades</option>
+            </select>
+        </div>
+            
+            
+    </header>
+
+
+<div class="corpotodo">
+    <div class="conversor">
+        <h1 class="titulo">Conversor de Unidades</h1>
+        <select name="" id="categoria" style="--color: #0f0f96">
+            <option value="Comprimento">Comprimento</option>
+            <option value="Peso">Peso</option>
+            <option value="Temperatura">temperatura</option>
+        </select>
+
+        <div class="inputField">
+            <input type="number" placeholder="Entrada" id="input_box">
+            <span>=</span>
+            <input type="number" placeholder="Resultado" id="result_box">
+        </div>
+
+        <div class="unit">
+            <select name="" id="inputCategory" style="--color: #0f0f96"></select>
+            <select name="" id="resultCategory" style="--color: #096409"></select>
+        </div>
+
+        <div class="btn">
+            <button>Calcular</button>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

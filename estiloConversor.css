@@ -1,0 +1,129 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+#menu {
+    width: 100%;
+    height: 110px;
+    background-color: grey;
+    border-radius: 1px;
+    position: absolute;
+
+}
+
+#menu ul {
+    list-style-type: none; /* Remover os marcadores da lista */
+    padding: 0; /* Remover o preenchimento padrão */
+    text-align: center; /* Centralizar o texto */
+}
+
+#menu ul li {
+    display: inline-block; /* Exibir os itens de lista em linha */
+}
+
+#menu ul li a {
+    display: block; /* Transformar o link em um bloco */
+    padding: 10px; /* Adicionar preenchimento ao redor do link */
+    text-decoration: none; /* Remover sublinhado padrão */
+    font-size: 20px;
+    color: black;
+}
+
+
+.corpotodo{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3em;
+    width: 100%;
+    height: 920px;
+}
+
+.conversor{
+    padding: 25px;
+    background-color: rgba(46, 75, 68, 0.534);
+    border: 2px solid #3a575271;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.4);
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+}
+
+.conversor .titulo{
+    margin-bottom: 25px;
+}
+
+.inputField{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+}
+
+input{
+    background-color: #fcfcfc;
+    font-size: 22px;
+    text-align: center;
+    padding: 15px 0;
+    border-radius: none;
+}
+#categoria{
+    width: 190px;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 5px;
+    margin-bottom: 10px;
+    background: #f7f7f7;
+    color: var(--color);
+}
+
+#result_box{
+    pointer-events: none;
+}
+
+span{
+    font-size: 30px;
+}
+
+.conversor .unit{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 27px;
+}
+
+.unit select{
+    width: 100%;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 5px;
+    background: #f7f7f7;
+    color: var(--color);
+}
+
+.btn button{
+    border: none;
+    padding: 10px 30px;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: 0.3s;
+}
+
+.btn button:hover{
+    background-color: #000;
+    color: #fff;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    display: none;
+}
