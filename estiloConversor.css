@@ -26,11 +26,12 @@
     background-color:  brown;
     border-radius: 10px 10px 10px 10px;
     border: 2px solid #3a575271;
-    box-shadow: 0 10px 10px rgba(0,0,0,0.4);
+    /*box-shadow: 0 10px 10px rgba(0,0,0,0.4);*/
     font-family: "Roboto", sans-serif;
     text-align: center;
     position: relative;
     color: white;
+    border-radius: 10px 10px 10px 10px;
     
 
 }
@@ -120,6 +121,8 @@ input::-webkit-inner-spin-button{
     z-index: 1;
     box-sizing: border-box;
     text-align: center;
+    border-radius: 10px 10px 10px 10px;
+    
 }
 
 .op h2 {
