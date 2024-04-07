@@ -114,7 +114,7 @@ class Calculadora {
                 resultado = (anterior / atual).toFixed(2);
                 this.historico.push(`${anterior} ${this.operacao} ${atual} = ${resultado}`);
                 break;
-            case "sqrt":
+            case "RaizQ":
                 resultado = Math.sqrt(atual).toFixed(2);
                 this.historico.push(`${this.operacao}(${atual}) = ${resultado}`);
                 break;
