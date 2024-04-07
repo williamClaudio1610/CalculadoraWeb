@@ -109,7 +109,7 @@
 }
 
 #botoes #igual-bt {
-    grid-column: span 2;
+    grid-column: span 1;
     background-color: whitesmoke;
     color: black;
 }
