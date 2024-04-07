@@ -13,39 +13,41 @@
 
 <body>
 
-<div class="corpotodo">
-    <div class="op">
-        <h2><a href="CalculadoraIndex.html"> Voltar a Calculadora</a></h2>
-    </div>
-    <div class="conversor">
-        <h1 class="titulo">Conversor de Unidades</h1>
-        <select name="" id="categoria" style="--color: #0f0f96">
-            <option value="...">...</option>
-            <option value="Comprimento">Comprimento</option>
-            <option value="Peso">Peso</option>
-            <option value="Temperatura">temperatura</option>
-        </select>
-
-        <div class="inputField">
-            <input type="number" placeholder="Entrada" id="input_box">
-            <span>=</span>
-            <input type="number" placeholder="Resultado" id="result_box">
+    <div class="corpotodo">
+        <div class="op">
+            <h2><a href="CalculadoraIndex.html"> Voltar a Calculadora</a></h2>
         </div>
-
-        <div class="unit">
-            <select name="" id="inputCategory" style="--color: #0f0f96">
+        <div class="conversor">
+            <h1 class="titulo">Conversor de Unidades</h1>
+            <select name="" id="categoria" style="--color: #0f0f96">
+                <option value="...">...</option>
+                <option value="Comprimento">Comprimento</option>
+                <option value="Peso">Peso</option>
+                <option value="Temperatura">temperatura</option>
             </select>
 
-            <select name="" id="resultCategory" style="--color: #096409">
-                            
-            </select>
-        </div>
+            <div class="inputField">
+                <input type="number" placeholder="Entrada" id="input_box">
+                <div class="unit">
+                    <select name="" id="inputCategory" style="--color: #0f0f96">
+                    </select>
+                </div>
+                <span>=</span>
+                <input type="number" placeholder="Resultado" id="result_box">
+                <div class="unit">
+                    <select name="" id="resultCategory" style="--color: #096409">
 
-        <div class="btn">
-            <button>Calcular</button>
+                    </select>
+                </div>
+            </div>
+
+
+
+            <div class="btn">
+                <button>Calcular</button>
+            </div>
         </div>
     </div>
-</div>
 </body>
 
 </html>
