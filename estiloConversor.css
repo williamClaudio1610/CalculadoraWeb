@@ -45,6 +45,10 @@
     justify-content: space-between;
     align-items: center;
     gap: 5px;
+
+    flex-direction: column;
+    justify-content: center;
+
 }
 
 input{
@@ -81,7 +85,7 @@ span{
 }
 
 .unit select{
-    width: 100%;
+    width: 70%;
     font-size: 20px;
     font-weight: 600;
     padding: 5px;
@@ -111,7 +115,12 @@ input::-webkit-inner-spin-button{
 }
 
 
-
+.unit {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .op {
     padding: 20px;
