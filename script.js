@@ -122,7 +122,7 @@ class Calculadora {
                 resultado = (atual / 100).toFixed(2);
                 this.historico.push(`${anterior} ${this.operacao} ${atual} = ${resultado}`);
                 break;
-            case "^":
+            case "Pot":
                 resultado = Math.pow(anterior, atual).toFixed(1);
                 this.historico.push(`${anterior} ${this.operacao} ${atual} = ${resultado}`);
                 break;
