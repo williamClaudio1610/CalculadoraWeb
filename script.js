@@ -1,3 +1,20 @@
+document.getElementById("botao-historico").addEventListener("click", function() {
+    const outraDiv = document.getElementById("outra-div");
+    
+    // Verifica se a outra div está visível ou não
+    if (outraDiv.style.display === "none" || outraDiv.style.display === "") {
+        // Se estiver oculta, mostra-a e exibe o histórico
+        outraDiv.style.display = "block";
+        mostrarHistorico();
+    } else {
+        // Se estiver visível, oculta-a
+        outraDiv.style.display = "none";
+        // Limpa o conteúdo da outra div
+        outraDiv.innerHTML = "";
+    }
+});
+
+
 
 //classe calculadora, apenas para organização
 class Calculadora {
@@ -14,8 +31,23 @@ class Calculadora {
         } else {
             this.historico = JSON.parse(localStorage.getItem('historico'));
         }
+
+
+        
         
     }
+    
+
+    formatarHistorico() {
+        let historicoFormatado = "";
+        this.historico.forEach((item, index) => {
+            historicoFormatado += `${index + 1}. ${item}\n`; 
+            // Adiciona cada item do histórico com um número de ordem
+        });
+        return historicoFormatado;
+    }
+
+    
 
 
     //adicionar um digito para calcular ou ser processado, 
@@ -109,6 +141,9 @@ class Calculadora {
             case "tan":
                 resultado = Math.tan(atual * (Math.PI / 180)).toFixed(2);
                 this.historico.push(`${this.operacao}(${atual}) = ${resultado}`);
+                case "+/-":
+                resultado = atual*(-1);
+                this.historico.push(`${this.operacao}(${atual}) = ${resultado}`);
                 break;
             default:
                 return;
@@ -118,6 +153,7 @@ class Calculadora {
         this.operacaoAnterior = "";
         this.operacao = undefined;
         this.atualizarVisor();
+        mostrarHistorico();
     }
 
     
@@ -149,12 +185,22 @@ class Calculadora {
     }
 }
 
+// Função para mostrar o histórico na outra-div
+function mostrarHistorico() {
+    const outraDiv = document.getElementById("outra-div");
+    // Chama a função formatarHistorico() e exibe o histórico na outra-div
+    outraDiv.innerText = calc.formatarHistorico(); 
+    // Adiciona o histórico formatado à outra div
+    outraDiv.innerText = historicoFormatado;
+}
+
+
 const previousOperacaoText = document.querySelector("#previous-operacao");
 const operacaoAtualText = document.querySelector("#operacao-atual");
 const buttons = document.querySelectorAll("#botoes button");
 
 const calc = new Calculadora(previousOperacaoText, operacaoAtualText);
-const operadoresUnarios = ["tan", "sen", "cos", "%", "\x020201A", "log"];
+const operadoresUnarios = ["tan", "sen", "cos", "%", "RaizQ", "log","+/-"];
 
 buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
