@@ -10,6 +10,12 @@ document.querySelector('.btn button').addEventListener('click', function () {
     document.getElementById('result_box').value = resultado;
 });
 
+
+/*pegamos o elemento categoria a partir do seu ID, por meio do ID
+ele vai reconhecer quando uma opção for acionada, 
+e consoante essa opção for acionada as outras duas combobox vao apresentar as opçoes abaixo,
+essas opçoes serão adicionaadas a partir do metodo opcoesDisponiveis*/
+
 document.getElementById("categoria").addEventListener("change", function () {
     const categoriaSelecionada = this.value;
     const opcoesInput = document.getElementById("inputCategory");
@@ -30,6 +36,7 @@ document.getElementById("categoria").addEventListener("change", function () {
     }
 });
 
+// metodo para receber as opcoes duma categporia, e onde colocar tais opções
 function opcoesDisponiveis(opcoes, selectElement) {
     opcoes.forEach(function (opcao) {
         const option = document.createElement("option");
@@ -39,6 +46,7 @@ function opcoesDisponiveis(opcoes, selectElement) {
     });
 }
 
+//aqui ele recebe um valor a ser convertido e recebe a subcategoria de entrada e a de saida para apresentar resultados
 function converterUnidades(valor, unidadeEntrada, unidadeResultado) {
     if (unidadeEntrada === "Quilometro") {
         if (unidadeResultado === "Metro") {
