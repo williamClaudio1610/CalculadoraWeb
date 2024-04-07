@@ -144,7 +144,6 @@ class Calculadora {
                 break;
             case "+/-":
                 resultado = atual*(-1);
-                this.historico.push(`${this.operacao}(${atual}) = ${resultado}`);
                 break;
             default:
                 return;
