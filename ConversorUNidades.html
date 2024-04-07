@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="estiloConversor.css">
     <script src="scriptCOnversor.js" defer></script>
+    <link rel="stylesheet" href="estilo.css">
 
     <title>Calculadora</title>
 </head>
@@ -13,15 +14,12 @@
 <body>
 
     <header id="menu">
-        <div id="menuDIv">
+        <ul id="MenuOpcoes">
+            <li><a href="ConversorUNidades.html">Conversor de Medidas</a></li>
+            <li>||</li>
+            <li><a href="CalculadoraIndex.html">Calculadora</a></li>
+        </ul>
 
-            <select name="Menu" id="menu">
-                <option value="Calculadora"><a href="CalculadoraIndex.html"></a>Calculadora</option>
-                <option value="conversor">ConversorUNidades</option>
-            </select>
-        </div>
-            
-            
     </header>
 
 
@@ -29,6 +27,7 @@
     <div class="conversor">
         <h1 class="titulo">Conversor de Unidades</h1>
         <select name="" id="categoria" style="--color: #0f0f96">
+            <option value="Escolhe">Escolha Unidade</option>
             <option value="Comprimento">Comprimento</option>
             <option value="Peso">Peso</option>
             <option value="Temperatura">temperatura</option>
@@ -41,8 +40,12 @@
         </div>
 
         <div class="unit">
-            <select name="" id="inputCategory" style="--color: #0f0f96"></select>
-            <select name="" id="resultCategory" style="--color: #096409"></select>
+            <select name="" id="inputCategory" style="--color: #0f0f96">
+            </select>
+
+            <select name="" id="resultCategory" style="--color: #096409">
+                            
+            </select>
         </div>
 
         <div class="btn">

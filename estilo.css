@@ -47,7 +47,7 @@
 #calc {
     width: 400px;
     padding: .5em;
-    background-color: #e0ffcd;
+    background-color: ##bebebf;
     color: black;
     display: flex;
     flex-direction: column;
@@ -92,16 +92,17 @@
 
 #botoes button {
     border: 1px solid transparent;
-    border-radius: 1px 1px 1px 1px;
+    border-radius: 25px 25px 25px 25px;
     height: 4em;
     font-size: 1.2em;
-    background-color: #be620b;
+    background-color: #2a2438;
     cursor: pointer;
+    color: white;
 }
 
 #botoes .num-bt {
-    background-color: black;
-    color: white;
+    background-color: whitesmoke;
+    color: black;
 }
 
 #botoes button:hover {
@@ -111,10 +112,16 @@
 
 #botoes #igual-bt {
     grid-column: span 2;
-    background-color: black;
-    color: white;
+    background-color: whitesmoke;
+    color: black;
 }
 
 #botoes #igual-bt:hover {
     background-color: #31343a;
+}
+.raiz{
+    
+    font-size: 24px;
+    font-weight: bold;
+    
 }
