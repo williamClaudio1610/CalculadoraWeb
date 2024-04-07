@@ -2,8 +2,8 @@ class Calculadora {
     constructor(previousOperacaoText, operacaoAtualText) {
         this.previousOperacaoText = previousOperacaoText;
         this.operacaoAtualText = operacaoAtualText;
-        this.operacaoAtual = 0;
-        this.operacaoAnterior = 0;
+        this.operacaoAtual = "";
+        this.operacaoAnterior = "";
         this.operacao = undefined;
         this.historico = [];
 
