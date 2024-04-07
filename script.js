@@ -1,3 +1,5 @@
+
+//classe calculadora, apenas para organização
 class Calculadora {
     constructor(previousOperacaoText, operacaoAtualText) {
         this.previousOperacaoText = previousOperacaoText;
@@ -16,15 +18,18 @@ class Calculadora {
     }
 
 
-    //adiiconar um digito para calcular
+    //adicionar um digito para calcular ou ser processado, 
     addDigito(digit) {
+        //verificar se ja existe um . no numero a ser digitado
         if (digit === "." && this.operacaoAtual.includes(".")) return;
 
+        //concatenar os digitos até o momento que for uma operação
         this.operacaoAtual = this.operacaoAtual.toString() + digit.toString();
+        //atualiza o visor para o valor atual
         this.atualizarVisor();
     }
 
-
+    //aqui ele pega uma operação, depois de pegar uma operação válida ele vai para o metodo realizar um calculo
     processamentoOperacao(operation) {
         if (this.operacaoAtual === "") return;
         if (this.operacaoAnterior !== "") {
@@ -35,6 +40,7 @@ class Calculadora {
         this.operacaoAtual = "";
     }
 
+    // aqui o calculo é feito por meio de uma operação feita pelo usuario
     realizarCalculo() {
         let resultado;
         const anterior = parseFloat(this.operacaoAnterior);
@@ -60,7 +66,7 @@ class Calculadora {
                 this.historico.push(`${anterior} ${this.operacao} ${atual} = ${resultado}`);
                 break;
             case "sqrt":
-                resultado = Math.sqrt(atual).toFixed(5);
+                resultado = Math.sqrt(atual).toFixed(2);
                 this.historico.push(`${this.operacao}(${atual}) = ${resultado}`);
                 break;
             case "%":
@@ -97,6 +103,8 @@ class Calculadora {
         this.atualizarVisor();
     }
 
+    
+    //aqui o visor é atualizado para o valor atual após uma operação ser feita
     atualizarVisor() {
         this.operacaoAtualText.innerText = this.operacaoAtual;
         if (this.operacao !== undefined) {
@@ -105,7 +113,7 @@ class Calculadora {
             this.previousOperacaoText.innerText = "";
         }
     }
-
+    // metodo para quando o botão CE for acionado, limpa tudo no visor
     limpar() {
         this.operacaoAtual = "";
         this.operacaoAnterior = "";
@@ -113,6 +121,7 @@ class Calculadora {
         this.atualizarVisor();
     }
 
+    //metodo para apagar um numero do visor
     deletar() {
         this.operacaoAtual = this.operacaoAtual.toString().slice(0, -1);
         this.atualizarVisor();
