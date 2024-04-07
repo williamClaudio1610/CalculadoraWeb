@@ -40,6 +40,23 @@ class Calculadora {
         this.operacaoAtual = "";
     }
 
+    processarUnario(operacao) {
+        if (this.operacao == undefined) {
+            this.operacao = operacao;
+            this.operacaoAnterior = "0";
+            this.realizarCalculo();
+            return;
+        }
+
+        const opOriginal = this.operacao;
+        const operandoAnt = this.operacaoAnterior;
+        this.operacao = operacao;
+        this.realizarCalculo();
+        this.operacao = opOriginal;
+        this.operacaoAnterior = operandoAnt;
+        this.realizarCalculo();
+    }
+
     // aqui o calculo é feito por meio de uma operação feita pelo usuario
     realizarCalculo() {
         let resultado;
@@ -137,6 +154,7 @@ const operacaoAtualText = document.querySelector("#operacao-atual");
 const buttons = document.querySelectorAll("#botoes button");
 
 const calc = new Calculadora(previousOperacaoText, operacaoAtualText);
+const operadoresUnarios = ["tan", "sen", "cos", "%", "\x020201A", "log"];
 
 buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -149,6 +167,8 @@ buttons.forEach((btn) => {
             calc.deletar();
         } else if (valor === "=") {
             calc.realizarCalculo();
+        } else if (operadoresUnarios.includes(valor)) {
+            calc.processarUnario(valor);
         } else {
             calc.processamentoOperacao(valor);
             
