@@ -141,7 +141,8 @@ class Calculadora {
             case "tan":
                 resultado = Math.tan(atual * (Math.PI / 180)).toFixed(2);
                 this.historico.push(`${this.operacao}(${atual}) = ${resultado}`);
-                case "+/-":
+                break;
+            case "+/-":
                 resultado = atual*(-1);
                 this.historico.push(`${this.operacao}(${atual}) = ${resultado}`);
                 break;
