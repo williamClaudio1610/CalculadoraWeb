@@ -51,7 +51,7 @@ class Calculadora {
                 resultado = (anterior - atual);
                 this.historico.push(`${anterior} ${this.operacao} ${atual} = ${resultado}`);
                 break;
-            case "*":
+            case "x":
                 resultado = (anterior * atual);
                 this.historico.push(`${anterior} ${this.operacao} ${atual} = ${resultado}`);
                 break;
